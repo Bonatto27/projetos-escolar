@@ -1,0 +1,40 @@
+def obter_numero(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Entrada inválida! Por favor, digite um número válido.")
+
+def calculadora():
+    while True:
+        print("\nSelecione a operação:")
+        print("1 - Adição\n2 - Subtração\n3 - Multiplicação\n4 - Divisão")
+        
+        operacao = input("Digite o número da operação desejada (1/2/3/4): ")
+        if operacao not in ['1', '2', '3', '4']:
+            print("Escolha inválida! Tente novamente.")
+            continue
+
+        num1 = obter_numero("Digite o primeiro número: ")
+        num2 = obter_numero("Digite o segundo número: ")
+
+        if operacao == '1':
+            resultado = num1 + num2
+        elif operacao == '2':
+            resultado = num1 - num2
+        elif operacao == '3':
+            resultado = num1 * num2
+        elif operacao == '4':
+            if num2 == 0:
+                print("Erro! Divisão por zero não é permitida.")
+                continue
+            resultado = num1 / num2
+
+        print(f"Resultado: {resultado}")
+
+        if input("Deseja realizar outra operação? (s/n): ").lower() != 's':
+            break
+
+    print("Encerrando a calculadora. Até mais!")
+
+calculadora()
